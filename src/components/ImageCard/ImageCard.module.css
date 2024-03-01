@@ -1,0 +1,7 @@
+.imgContainer {
+  background-color: rgb(14, 62, 62);
+  width: calc((1280px - 50px) / 4);
+  height: calc((width) / 4);
+  height: 172px;
+  border-radius: 8px;
+}
