@@ -1,7 +1,13 @@
-.imgContainer {
-  background-color: rgb(14, 62, 62);
+.img {
   width: calc((1280px - 50px) / 4);
   height: calc((width) / 4);
-  height: 172px;
-  border-radius: 8px;
+  background-color: #888f8c;
+  background-size: cover;
+  border-radius: 10px;
+
+  transition: 300ms;
+}
+
+.img:hover {
+  transform: scale(1.02);
 }

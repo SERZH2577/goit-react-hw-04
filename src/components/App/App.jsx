@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import SearchBar from '../SearchBar/SearchBar';
 import ImageCard from '../ImageCard/ImageCard';
-
+import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn';
+import Loader from '../Loader/Loader';
+import ReactModal from 'react-modal';
 import css from './App.module.css';
 
 export default function App() {
@@ -11,6 +13,9 @@ export default function App() {
     <>
       <SearchBar />
       <ImageCard />
+      <LoadMoreBtn />
+      <Loader />
+      <ReactModal />
     </>
   );
 }
