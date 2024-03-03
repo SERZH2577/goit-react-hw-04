@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { Axios } from 'axios';
+import { useState, useEffect } from 'react';
 import SearchBar from '../SearchBar/SearchBar';
 import ImageGallery from '../ImageGallery/ImageGallery';
 import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn';
@@ -7,7 +8,16 @@ import ReactModal from 'react-modal';
 import css from './App.module.css';
 
 export default function App() {
-  // const [count, setCount] = useState(0);
+  // const [images, setImages] = useState([]);
+
+  // useEffect(() => {
+  //   async function getImages() {
+  //     const response = await Axios.get('');
+  //     setImages(response.data.hits);
+  //   }
+
+  //   getImages();
+  // }, []);
 
   return (
     <>
