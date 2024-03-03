@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API_KEY = 'SUUEpg8eGmgRBtWQNK-mXIeBGJQlQS2J2m8NPoAUcJM';
-axios.defaults.baseURL = 'https://api.unsplash.com/photos/';
+axios.defaults.baseURL = 'https://api.unsplash.com/';
 axios.defaults.params = {
   client_id: API_KEY,
   orientation: 'landscape',
@@ -9,7 +9,7 @@ axios.defaults.params = {
 };
 
 export default async function getImages(query, page) {
-  const { data } = await axios.get(`?=query${query}&page=${page}`);
+  const { data } = await axios.get(`photos/?query=${query}&page=${page}`);
 
   return data;
 }

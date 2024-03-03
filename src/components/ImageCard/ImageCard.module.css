@@ -1,5 +1,5 @@
 .container {
-  width: calc((1280px - 60px) / 4);
+  width: calc((1280px - 30px) / 4);
 
   border: 1px solid #3883a8;
   border-radius: 10px;
@@ -8,7 +8,7 @@
 }
 
 .imgContainer {
-  height: calc(((1280px - 60px) / 4) / 1.42);
+  height: calc(((1280px - 30px) / 4) / 1.42);
 }
 
 .img {

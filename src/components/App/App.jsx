@@ -1,5 +1,6 @@
-import { Axios } from 'axios';
+// import { Axios } from 'axios';
 import { useState, useEffect } from 'react';
+import getImages from '../../apiService/photos';
 import SearchBar from '../SearchBar/SearchBar';
 import ImageGallery from '../ImageGallery/ImageGallery';
 import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn';
@@ -8,30 +9,51 @@ import ReactModal from 'react-modal';
 import css from './App.module.css';
 
 export default function App() {
-  // const [images, setImages] = useState([]);
+  const [query, setQuery] = useState('');
+  const [images, setImages] = useState([]);
+  const [page, setPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isHidden, setIsHidden] = useState('block');
 
-  // useEffect(() => {
-  //   async function getImages() {
-  //     const response = await Axios.get('');
-  //     setImages(response.data.hits);
-  //   }
+  const handleSearch = query => {
+    setQuery(query);
+  };
 
-  //   getImages();
-  // }, []);
+  const handelPage = () => {
+    setPage(prevPage => prevPage + 1);
+  };
+
+  useEffect(() => {
+    if (!query) return;
+
+    async function findImages() {
+      try {
+        setIsHidden('none');
+        setIsLoading(true);
+        const images = await getImages(query, page);
+        setImages(prevImages => [...prevImages, ...images]);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setIsLoading(false);
+        setIsHidden('block');
+      }
+    }
+
+    findImages();
+  }, [query, page]);
 
   return (
     <>
-      <SearchBar />
-      <ImageGallery arr={[1, 2, 3, 4, 5, 6, 7, 8, 9]} />
-      <LoadMoreBtn />
-      <Loader />
+      <SearchBar onSubmit={handleSearch} />
+      <ImageGallery images={images} />
+      {images.length !== 0 && (
+        <LoadMoreBtn onClick={handelPage} isHidden={isHidden}>
+          Load more
+        </LoadMoreBtn>
+      )}
+      {isLoading && <Loader />}
       <ReactModal />
     </>
   );
 }
-
-// SUUEpg8eGmgRBtWQNK-mXIeBGJQlQS2J2m8NPoAUcJM
-
-// urls
-// small
-// regular

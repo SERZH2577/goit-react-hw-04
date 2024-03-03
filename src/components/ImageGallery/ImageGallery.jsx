@@ -1,28 +1,7 @@
-// import { axios } from 'axios';
-import { useState, useEffect } from 'react';
 import ImageCard from '../ImageCard/ImageCard';
-import getImages from '../../apiService/photos';
 import css from './ImageGallery.module.css';
 
-// console.log(getImages('cat', 3).hits);
-
-export default function ImageGallery() {
-  const [query, setQuery] = useState('cat');
-  const [images, setImages] = useState([]);
-
-  const handleSearch = query => setQuery(query);
-
-  useEffect(() => {
-    if (!query) return;
-
-    async function findImages() {
-      const images = await getImages(query, 1);
-      setImages(images);
-    }
-
-    findImages();
-  }, [query]);
-
+export default function ImageGallery({ images }) {
   return (
     <div className={css.container}>
       <ul className={css.list}>
@@ -48,12 +27,3 @@ export default function ImageGallery() {
     </div>
   );
 }
-
-// useEffect(() => {
-//   async function getImages() {
-//     const response = await Axios.get('');
-//     setImages(response.data.hits);
-//   }
-
-//   getImages();
-// }, []);
