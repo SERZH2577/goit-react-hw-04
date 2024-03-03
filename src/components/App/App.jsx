@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import SearchBar from '../SearchBar/SearchBar';
-import ImageCard from '../ImageCard/ImageCard';
+import ImageGallery from '../ImageGallery/ImageGallery';
 import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn';
 import Loader from '../Loader/Loader';
 import ReactModal from 'react-modal';
@@ -12,7 +12,7 @@ export default function App() {
   return (
     <>
       <SearchBar />
-      <ImageCard />
+      <ImageGallery arr={[1, 2, 3, 4, 5, 6, 7, 8, 9]} />
       <LoadMoreBtn />
       <Loader />
       <ReactModal />
