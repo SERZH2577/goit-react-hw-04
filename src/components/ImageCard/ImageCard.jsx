@@ -1,5 +1,5 @@
-import { AiFillLike } from 'react-icons/ai';
-import css from './ImageCard.module.css';
+import { AiFillLike } from "react-icons/ai";
+import css from "./ImageCard.module.css";
 
 export default function ImageCard({ smallImg, altImg, author, imgLikes }) {
   return (
@@ -12,7 +12,7 @@ export default function ImageCard({ smallImg, altImg, author, imgLikes }) {
           <span className={css.authorParagraph}>Author:</span> {author}
         </p>
         <p className={css.likes}>
-          {<AiFillLike size='18' className={css.iconLikes} />} {imgLikes}
+          {<AiFillLike size="18" className={css.iconLikes} />} {imgLikes}
         </p>
       </div>
     </div>
