@@ -18,6 +18,8 @@
   object-fit: cover;
   background-color: #3883a8;
   border-radius: 10px 10px 0 0;
+
+  cursor: zoom-in;
 }
 
 .container:hover {

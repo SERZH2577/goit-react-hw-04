@@ -18,7 +18,7 @@ export default function ImageGallery({ images, onModalOpen }) {
                 key={id}
                 className={css.item}
                 onClick={() => {
-                  // onModalOpen(full, alt_description);
+                  onModalOpen(full, alt_description);
                 }}
               >
                 {

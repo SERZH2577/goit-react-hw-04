@@ -6,8 +6,8 @@ import ImageGallery from "../ImageGallery/ImageGallery";
 import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
 import Loader from "../Loader/Loader";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
-import ImageModal from "react-modal";
-import css from "./App.module.css";
+import ImageModal from "../ImageModal/ImageModal";
+// import css from "./App.module.css";
 
 export default function App() {
   const [query, setQuery] = useState("");
@@ -17,8 +17,8 @@ export default function App() {
   const [isHidden, setIsHidden] = useState("block");
   const [error, setError] = useState("");
   const [isError, setIsError] = useState(false);
-  // const [showModal, setShowModal] = useState(false);
-  // const [modalContent, setModalContent] = useState({});
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalInfo, setModalInfo] = useState({});
 
   const handleSearch = (query) => {
     setQuery(query);
@@ -56,20 +56,20 @@ export default function App() {
     findImages();
   }, [query, page]);
 
-  // const onModalOpen = (full, alt_description) => {
-  //   setModalContent({ full, alt_description });
-  //   setShowModal(true);
-  // };
+  const handleOpenModal = (full, alt_description) => {
+    setModalInfo({ full, alt_description });
+    setModalIsOpen(true);
+  };
 
-  // const onCloseModal = () => {
-  //   setShowModal(false);
-  // };
+  const handleCloseModal = () => {
+    setModalIsOpen(false);
+  };
 
   return (
     <>
       <SearchBar onSubmit={handleSearch} />
       {images.length !== 0 && (
-        <ImageGallery images={images} /*onModalOpen={onModalOpen}*/ />
+        <ImageGallery images={images} onModalOpen={handleOpenModal} />
       )}
       {images.length !== 0 && (
         <LoadMoreBtn onClick={handelPage} isHidden={isHidden}>
@@ -77,9 +77,14 @@ export default function App() {
         </LoadMoreBtn>
       )}
       {isLoading && <Loader />}
-      {/* {showModal && (
-        <ImageModal onCloseModal={onCloseModal} content={modalContent} />
-      )} */}
+      {modalIsOpen && (
+        <ImageModal
+          // isOpen={modalIsOpen}
+          onCloseModal={handleCloseModal}
+          info={modalInfo}
+        />
+      )}
+
       {isError && <ErrorMessage error={error} isHidden={isHidden} />}
     </>
   );
