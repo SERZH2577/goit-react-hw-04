@@ -1,4 +1,3 @@
-// import { Axios } from 'axios';
 import { useState, useEffect } from "react";
 import getImages from "../../apiService/photos";
 import SearchBar from "../SearchBar/SearchBar";
@@ -7,7 +6,6 @@ import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
 import Loader from "../Loader/Loader";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import ImageModal from "../ImageModal/ImageModal";
-// import css from "./App.module.css";
 
 export default function App() {
   const [query, setQuery] = useState("");
