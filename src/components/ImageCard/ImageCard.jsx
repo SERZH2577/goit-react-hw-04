@@ -1,10 +1,16 @@
 import { AiFillLike } from "react-icons/ai";
 import css from "./ImageCard.module.css";
 
-export default function ImageCard({ smallImg, altImg, author, imgLikes }) {
+export default function ImageCard({
+  smallImg,
+  altImg,
+  author,
+  imgLikes,
+  onClick,
+}) {
   return (
     <div className={css.container}>
-      <div className={css.imgContainer}>
+      <div className={css.imgContainer} onClick={onClick}>
         <img src={smallImg} alt={altImg} className={css.img} />
       </div>
       <div className={css.info}>

@@ -1,7 +1,7 @@
 import ImageCard from "../ImageCard/ImageCard";
 import css from "./ImageGallery.module.css";
 
-export default function ImageGallery({ images, onModalOpen }) {
+export default function ImageGallery({ images, onClick }) {
   return (
     <div className={css.container}>
       <ul className={css.list}>
@@ -14,15 +14,12 @@ export default function ImageGallery({ images, onModalOpen }) {
             user: { name },
           }) => {
             return (
-              <li
-                key={id}
-                className={css.item}
-                onClick={() => {
-                  onModalOpen(full, alt_description);
-                }}
-              >
+              <li key={id} className={css.item}>
                 {
                   <ImageCard
+                    onClick={() => {
+                      onClick(full, alt_description);
+                    }}
                     smallImg={small}
                     altImg={alt_description}
                     author={name}

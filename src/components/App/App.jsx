@@ -67,7 +67,7 @@ export default function App() {
     <>
       <SearchBar onSubmit={handleSearch} />
       {images.length !== 0 && (
-        <ImageGallery images={images} onModalOpen={handleOpenModal} />
+        <ImageGallery images={images} onClick={handleOpenModal} />
       )}
       {images.length !== 0 && (
         <LoadMoreBtn onClick={handelPage} isHidden={isHidden}>
@@ -76,11 +76,7 @@ export default function App() {
       )}
       {isLoading && <Loader />}
       {modalIsOpen && (
-        <ImageModal
-          // isOpen={modalIsOpen}
-          onCloseModal={handleCloseModal}
-          info={modalInfo}
-        />
+        <ImageModal onCloseModal={handleCloseModal} info={modalInfo} />
       )}
 
       {isError && <ErrorMessage error={error} isHidden={isHidden} />}
