@@ -10,8 +10,13 @@ export default function ImageCard({
 }) {
   return (
     <div className={css.container}>
-      <div className={css.imgContainer} onClick={onClick}>
-        <img src={smallImg} alt={altImg} className={css.img} />
+      <div className={css.imgContainer}>
+        <img
+          src={smallImg}
+          alt={altImg}
+          className={css.img}
+          onClick={onClick}
+        />
       </div>
       <div className={css.info}>
         <p className={css.author}>
